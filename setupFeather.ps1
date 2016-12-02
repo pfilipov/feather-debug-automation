@@ -1,14 +1,20 @@
+# path to the Feather's project
 $currentPath = 'C:\f\';
 
 $featherFolderName = "feather";
 $commonBinFolderName = "common-bin";
 
+# path to MSBuild, this variable is not mandatory
 $msbuild = "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\msbuild.exe";
+
+# path to the Sitefinity web app project file
 $projectCsproj = "D:\WorkRelated\Distributions\Sitefinity\9.2\Projects\SampleProject\SitefinityWebApp.csproj";
+
+# path where the log files will be kept
 $logsFolder = "D:\WorkRelated\Temp";
 
 # get the folder
-$newLocation = Get-ChildItem -Path $currentPath | where {$_.name -match (ë^í + $featherFolderName)} |
+$newLocation = Get-ChildItem -Path $currentPath | where {$_.name -match (‚Äò^‚Äô + $featherFolderName)} |
 select -First 1 | select -ExpandProperty FullName -ErrorAction SilentlyContinue;
 
 # navigate to folder
@@ -17,8 +23,8 @@ Set-Location -Path $newLocation
 New-Item $commonBinFolderName -ItemType directory
 
 # get project files
-$files = Get-ChildItem -Path $newLocation -Recurse -ErrorAction SilentlyContinue | where {$_.name -match ë^Telerik.Sitefinity.Frontend.*\.csproj$í} |
- where {$_.name -match ë^((?!test).)*$í};
+$files = Get-ChildItem -Path $newLocation -Recurse -ErrorAction SilentlyContinue | where {$_.name -match ‚Äò^Telerik.Sitefinity.Frontend.*\.csproj$‚Äô} |
+ where {$_.name -match ‚Äò^((?!test).)*$‚Äô};
 
 ForEach ($file In $files)
 {
@@ -29,7 +35,7 @@ ForEach ($file In $files)
 }
 
 #Write-Host("Press Enter to continue");
-#$x = $host.UI.RawUI.ReadKey(ìNoEcho,IncludeKeyDownî);
+#$x = $host.UI.RawUI.ReadKey(‚ÄúNoEcho,IncludeKeyDown‚Äù);
 #if($x.VirtualKeyCode -ne 13)
 #{
 # exit;
@@ -45,7 +51,7 @@ ForEach ($file In $files)
 }
 
 #Write-Host("Press Enter to continue");
-#$x = $host.UI.RawUI.ReadKey(ìNoEcho,IncludeKeyDownî);
+#$x = $host.UI.RawUI.ReadKey(‚ÄúNoEcho,IncludeKeyDown‚Äù);
 #if($x.VirtualKeyCode -ne 13)
 #{
 # exit;
