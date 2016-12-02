@@ -1,5 +1,10 @@
+# path to the Feather-Widgets' project
 $currentPath = 'C:\f\';
+
+# path to the Sitefinity web app project file
 $projectCsproj = "D:\WorkRelated\Distributions\Sitefinity\9.2\Projects\SampleProject\SitefinityWebApp.csproj";
+
+# path where the log files will be kept
 $logsFolder = "D:\WorkRelated\Temp";
 
 $widgetsFolderName = "feather-widgets";
@@ -17,7 +22,7 @@ Set-Location -Path $newLocation
 New-Item $commonBinFolderName -ItemType directory
 
 # get project files
-$files = Get-ChildItem -Path $newLocation -Recurse -ErrorAction SilentlyContinue | where {$_.name -match ‘^Telerik.Sitefinity.Frontend.*\.csproj$’};
+$files = Get-ChildItem -Path $newLocation -Recurse -ErrorAction SilentlyContinue | where {$_.name -match â€˜^Telerik.Sitefinity.Frontend.*\.csproj$â€™};
 
 ForEach ($file In $files)
 {
